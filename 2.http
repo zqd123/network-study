@@ -10,7 +10,7 @@ Content-Type: application/json
     },
     {
       "role": "user",
-      "content": "讲个故事"
+      "content": "你好"
     }
   ],
   "model": "gpt-3.5-turbo",
