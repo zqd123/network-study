@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+        /**
+         * fetch 返回的是一个Promise,当接收到服务器的响应头后,Promise完成
+         * fetch 支持流式传输请求和流式获取响应数据
+         */
+        fetch('https://mock.apifox.cn/m1/3263409-0-default/pet/1').then(async res=>{
+            console.log('res:',res);            
+            const reader = res.body.getReader()
+            const decode = new TextDecoder()
+            while(1){
+              const {done,value} = await reader.read()
+              if (done) {
+                break
+              }
+              console.log('value:',JSON.parse(decode.decode(value))  );
+              
+            }
+        }).catch(e=>{
+            console.log('e:',e);            
+        })
+    </script>
+    <script>
+      /**
+       * XMLHttpRequest 是将整个响应读入内容缓冲区
+       */
+      const xhr = new XMLHttpRequest();
+
+      xhr.onreadystatechange = function () {
+        // console.log("xhr:", xhr.readyState);
+        //xhr.readyState的值:
+        // 0	UNSENT	代理被创建，但尚未调用 open() 方法。
+        // 1	OPENED	open() 方法已经被调用。
+        // 2	HEADERS_RECEIVED	send() 方法已经被调用，并且头部和状态已经可获得。
+        // 3	LOADING	下载中；responseText 属性已经包含部分数据。
+        // 4	DONE	下载操作已完成。
+        if (xhr.readyState === 2) {
+            console.log(xhr.getAllResponseHeaders());
+            
+        }
+      };
+
+      xhr.open("GET", "https://mock.apifox.cn/m1/3263409-0-default/pet/1");
+
+      xhr.setRequestHeader("Content-Type", "application/json");
+
+      xhr.send(null);
+    </script>
+  </body>
+</html>
