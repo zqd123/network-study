@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /**
+       * 跨域
+       */
+      // fetch('https://pvp.qq.com/web201605/js/herolist.json').then(res=>res.json()).then(res=>{
+      //     console.log('res:',res);
+      // })
+
+      /**
+       * 跨域-简单请求
+       */
+      fetch("https://mock.apifox.cn/m1/3263409-0-default/heroList")
+        .then((res) => res.json())
+        .then((res) => {
+          console.log("res:", res);
+        });
+
+      /**
+       * 跨域-预检请求
+       */
+      fetch("https://mock.apifox.cn/m1/3263409-0-default/api/user/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: {
+          user: "string",
+          password: "string",
+        },
+      })
+        .then((res) => res.json())
+        .then((res) => {
+          console.log("res:", res);
+        });
+    </script>
+  </body>
+</html>
