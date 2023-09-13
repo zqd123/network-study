@@ -1,0 +1,7 @@
+POST https://mock.apifox.cn/m1/3263409-0-default/api/user/login HTTP/1.1
+Content-Type: application/json
+
+{
+    user: "string",// 这里不存在跨域,只有浏览器有跨域
+    password: "string",
+}
