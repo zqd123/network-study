@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>xhr和fetch</h1>
+    <script>
+        /** xhr*/
+        // 1.创建xhr对象
+        const xhr = new XMLHttpRequest();
+        // 监听请求状态
+        xhr.onreadystatechange = function () {
+          console.log(xhr.readyState);
+          const a = {
+            DONE: 4,
+            HEADERS_RECEIVED: 2,
+            LOADING: 3,
+            OPENED: 1,
+            UNSENT: 0,
+          };
+          if (xhr.readyState === xhr.DONE) {
+            console.log(xhr.response);
+            
+          }
+        };
+        // 上传进度
+        xhr.onprogress = function(e){
+          console.log(e.loaded,e.total);
+          
+        }
+      console.log("🚀 ~ file: index.html:14 ~ xhr:", xhr);
+      // 请求行
+      xhr.open("POST", "https://mock.apifox.com/m1/3263409-0-default/api/user/login");
+      // 请求头
+      xhr.setRequestHeader("Content-Type", "application/json");
+      xhr.responseType = 'blob'
+      // 3.发送请求
+      xhr.send();
+      // 超时时间
+      xhr.timeout = 3000;
+      // 取消请求
+      setTimeout(() => {
+        xhr.abort();
+      }, 1000);
+    </script>
+  </body>
+</html>
