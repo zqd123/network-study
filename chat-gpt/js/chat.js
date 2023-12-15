@@ -1,4 +1,4 @@
-fetch('http://localhost:7010/chat', {
+fetch('http://localhost:3000/chat', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
@@ -24,7 +24,7 @@ form.onsubmit = async (e) => {
   const content = textArea.value;
   createUserContent('我');
   const robot = createRobotContent();
-  const resp = await fetch('http://localhost:7010/chat', {
+  const resp = await fetch('http://localhost:3000/chat', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
