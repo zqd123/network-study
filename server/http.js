@@ -54,6 +54,9 @@ async function sendMessage(msg, { onData, onEnd, onError }) {
   stream.on("end", () => {
     onEnd();
   });
+  stream.on("error", (error) => {
+    onError(error);
+  });
 }
 
 function clear() {
