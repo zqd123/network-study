@@ -6,6 +6,7 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
+/**chat-gpt */
 app.post("/chat", (req, res) => {
   if (req.body.clear) {
     clear();
@@ -32,6 +33,20 @@ app.post("/chat", (req, res) => {
   // console.log(req);
 });
 
+/**测试接口 */
+app.get("/haha",(req,res)=>{
+  res.status(200)
+  res.statusMessage = 'ha'
+  res.send('haha')
+  res.end()
+})
+// 所有路由定义完之后，最后做404处理 /
+app.get('*', function (req, res){
+  res.status(404)
+  res.statusMessage = 'Not Found'
+  res.send('找不到我吧')
+  res.end()
+});
 app.listen(3000, () => {
   console.log("Server is running on port 3000");
 });
