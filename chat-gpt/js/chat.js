@@ -35,8 +35,9 @@ form.onsubmit = async (e) => {
   });
   // 流式读取
   const reader = resp.body.getReader();
+  //文本解码器
   const decoder = new TextDecoder();
-  while (1) {
+  while (true) {
     const { done, value } = await reader.read();
     if (done) {
       break;

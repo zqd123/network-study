@@ -14,6 +14,9 @@ app.post("/chat", (req, res) => {
   }
   let { content } = req.body;
   content = content && content.trim();
+  res.writeHead(200,{
+    'Content-Type': 'text/event-stream', // 启用 Stream
+  })
   sendMessage(content, {
     onData(chunk) {
       res.write(chunk);

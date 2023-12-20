@@ -1,6 +1,6 @@
 const http = require("http");
 const axios = require("axios");
-const chatCompletionURL = `http://172.16.1.193:8080/openai/deployments/GPT35-turbo/chat/completions?api-version=2023-08-01-preview`;
+const chatCompletionURL = `http://172.16.1.193:8080/openai/deployments/GPT35-turbo/chat/completions?api-version=2023-12-01-preview`;
 const modelName = "gpt-3.5-turbo";
 const history = [];
 const options = {
