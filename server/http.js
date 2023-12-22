@@ -46,7 +46,7 @@ async function sendMessage(msg, { onData, onEnd, onError }) {
         msg += content;
         onData && onData(content);
       } catch (error) {
-        console.error("Could not JSON parse stream message", message, error);
+        // console.error("Could not JSON parse stream message", message, error);
         continue;
       }
     }
