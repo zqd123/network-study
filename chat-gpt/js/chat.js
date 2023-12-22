@@ -12,12 +12,12 @@ fetch('http://localhost:3000/chat', {
 const form = document.querySelector('form');
 const textArea = document.querySelector('textarea');
 
-textArea.onkeydown = (e) => {
+textArea.onkeydown =  (e) => {
   if (e.key === 'Enter' && !e.shiftKey && !e.ctrlKey && !e.altKey) {
     e.preventDefault();
     form.dispatchEvent(new Event('submit'));
   }
-};
+}
 
 form.onsubmit = async (e) => {
   e.preventDefault();

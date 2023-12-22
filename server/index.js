@@ -40,6 +40,18 @@ app.get("/haha",(req,res)=>{
   res.send('haha')
   res.end()
 })
+/**get请求发送body */
+app.get("/getSendBody", (req, res) => {
+  console.log("🚀 ~ file: index.js:58 ~ app.get ~ req:", req.body)
+  res.send(req.body);
+  res.end();
+})
+/**get请求发送body */
+app.post("/postSendBody", (req, res) => {
+  console.log("🚀 ~ file: index.js:58 ~ app.get ~ req:", req.body)
+  res.send(req.body);
+  res.end();
+})
 // 所有路由定义完之后，最后做404处理 /
 app.get('*', function (req, res){
   res.status(404)
@@ -50,3 +62,5 @@ app.get('*', function (req, res){
 app.listen(3000, () => {
   console.log("Server is running on port 3000");
 });
+
+
