@@ -1,0 +1,19 @@
+<!-- storage_index1.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <button class="btn">打开同源页面</button>
+</head>
+<body>
+<script>
+    window.sessionStorage.setItem('sessionStorage_page1',11)
+    
+    let oBtn = document.querySelector('.btn')
+    oBtn.onclick = function(){
+       window.open("b.html")
+    }
+</script>
+</body>
+</html>
