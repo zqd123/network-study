@@ -50,6 +50,8 @@ app.post("/chat", (req, res) => {
 /**测试接口 */
 app.get("/haha",(req,res)=>{
   res.status(200)
+  // res.setHeader('Cache-Control', 'no-cache');//no-cache并不是不缓存哦
+  res.setHeader('Cache-Control', 'no-store');//no-store才是不缓存
   res.statusMessage = 'ha'
   res.send('haha')
   res.end()
@@ -77,6 +79,16 @@ app.get("/abort",(req,res)=>{
     
     res.send(repeatKeyData(reqData.key));
   }, time);
+})
+//返回页面
+app.get('/',(req,res)=>{
+  res.sendFile(__dirname+'/index.html')
+})
+//设置Set-Cookie
+app.get('/setCookie',(req,res)=>{
+  res.setHeader('Set-Cookie',['userToken=123456'])
+  res.send('setCookie')
+  res.end()
 })
 // 所有路由定义完之后，最后做404处理 /
 app.get('*', function (req, res){
