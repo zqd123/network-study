@@ -86,7 +86,7 @@ app.get('/',(req,res)=>{
 })
 //设置Set-Cookie
 app.get('/setCookie',(req,res)=>{
-  res.setHeader('Set-Cookie',['userToken=123456'])
+  res.setHeader('Set-Cookie',['userToken=123456','httpOnlyCookie=abc; HttpOnly;'])
   res.send('setCookie')
   res.end()
 })
