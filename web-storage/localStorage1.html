@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>localStorage1</title>
+</head>
+<body>
+    <h1>localStorage1</h1>
+    <ul id="ul"></ul>
+    <script>
+        function changeView(){
+            const ul = document.getElementById('ul');
+            ul.innerHTML = '';
+            for(let i = 0; i < localStorage.length; i++){
+                const key = localStorage.key(i);
+                const value = localStorage.getItem(key);
+                const li = document.createElement('li');
+                li.textContent = `${key}: ${value}`;
+                ul.appendChild(li);
+            }
+        }
+        function changeData(key,value){
+            localStorage.setItem(key,value);
+            changeView();
+        }
+        changeData('name','张三')
+        changeData('age','18')
+    </script>
+</body>
+</html>
