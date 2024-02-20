@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket2</title>
+    <style>
+        .message-block { list-style-type: none; margin: 0; padding: 0; }
+        .message-block li { margin-bottom: 10px; }
+        .message-block li:before { content: ">"; color: blue; margin-right: 5px; }
+    </style>
+</head>
+<body>
+    <h1>WebSocket2</h1>
+    <ul class="message-block"></ul>
+    <form action="" submit="sendMessage">
+        <input type="text" name="message" id="messageInput">
+        <button type="submit" id="send">发送</button>
+    </form>
+    <script>
+        const ws = new WebSocket('ws://localhost:8080/socket?userId=Jerry');
+        ws.onopen = function () {
+            console.log('连接WebSocket');
+            ws.send('Hello, WebSocket!');
+        }
+        ws.onmessage = function (event) {
+            console.log('接收到消息:', event.data);
+            const messageBlock = document.querySelector('.message-block');
+            const li = document.createElement('li');
+            li.textContent = event.data;
+            messageBlock.appendChild(li);
+            
+        }
+
+        function sendMessage(e) {
+            e.preventDefault();
+            const messageInput = document.getElementById('messageInput');
+            const message = messageInput.value;
+            // ws.send(message);
+            messageInput.value = '';
+            fetch(`//localhost:8080/message?userId=Tom&message=${message}`,).then(res=>res.text()).then(data=>{
+                console.log(data);
+            })
+        }
+
+        document.getElementById('send').addEventListener('click', sendMessage);
+    </script>
+</body>
+</html>
