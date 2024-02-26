@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+<body>
+   <h1>BroadcastChannel2-Jerry</h1>
+   <p>接收消息：</p>
+   <p id="message" style="white-space: pre;"></p>
+   <input type="text" name="message" id="messageInput">
+   <button onclick="postMessage()">发送消息</button>
+   <script>
+       const messageElement = document.getElementById('message');
+       const messageInput = document.getElementById('messageInput');
+       const bc = new BroadcastChannel('channel');
+       bc.onmessage = function(e) {
+           console.log('收到消息：', e.data);
+           messageElement.textContent += '\n'+e.data;
+       }
+       function postMessage() {
+           console.log('发送消息');
+           const message = messageInput.value;
+           bc.postMessage(message);
+           messageInput.value = '';
+       }
+   </script>
+</body>
+</html>
