@@ -6,18 +6,17 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>shared1</h1>
-    <input type="text" id="content">
-    <button id="btn">发送</button>
+    <h1>shared2</h1>
+    <p>接收到的消息：</p>
+    <p id="message"></p>
     <script>
+        const message = document.getElementById('message')
         const shared = new SharedWorker('shared.js');
         shared.port.start()
         shared.port.onmessage = (e)=>{
-            // if (e.data) {
-            //     console.log(e.data)
-            // }
-            console.log(e.data)
+            message.innerHTML = e.data
         }
+
         setInterval(()=>{
             shared.port.postMessage('get')
         },1000)

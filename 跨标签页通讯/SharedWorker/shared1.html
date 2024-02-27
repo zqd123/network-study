@@ -12,12 +12,11 @@
     <script>
         const btn = document.getElementById('btn');
         const content = document.getElementById('content');
+        const message = document.getElementById('message')
 
         const shared = new SharedWorker('shared.js');
-        shared.port.postMessage('123');
         btn.onclick = function(){
             shared.port.postMessage(content.value);
-            console.log("🚀 ~ content.value:", content.value)
             content.value = '';
         }
     </script>

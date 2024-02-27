@@ -1,4 +1,4 @@
-const data = "";//存储用户发送的信息
+let data = "";//存储用户发送的信息
 onconnect = (event) => {
     const port = event.ports[0];//获取客户端端口
     port.onmessage = (event) => {
