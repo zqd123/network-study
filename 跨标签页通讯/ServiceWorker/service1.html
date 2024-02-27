@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>service1</h1>
+    <input type="text" id="content">
+    <button id="bt">发送</button>
+    <script>
+        /**注册serviceWorker*/
+        navigator.serviceWorker.register('sw.js').then(function(registration){
+            console.log('service worker 注册成功');
+        })
+        const bt = document.getElementById('bt');
+        bt.addEventListener('click',function(){
+            // 发送消息
+            const message = document.getElementById('content').value;
+            navigator.serviceWorker.controller.postMessage(message);
+        })
+    </script>
+</body>
+</html>
