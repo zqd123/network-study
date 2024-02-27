@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>shared1</h1>
+    <input type="text" id="content">
+    <button id="btn">发送</button>
+    <script>
+        const btn = document.getElementById('btn');
+        const content = document.getElementById('content');
+
+        const shared = new SharedWorker('shared.js');
+        shared.port.postMessage('123');
+        btn.onclick = function(){
+            shared.port.postMessage(content.value);
+            console.log("🚀 ~ content.value:", content.value)
+            content.value = '';
+        }
+    </script>
+</body>
+</html>
