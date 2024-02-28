@@ -16,8 +16,8 @@
         })
         const bt = document.getElementById('bt');
         bt.addEventListener('click',function(){
-            // 发送消息
             const message = document.getElementById('content').value;
+            // controller控制器发送消息
             navigator.serviceWorker.controller.postMessage(message);
         })
     </script>

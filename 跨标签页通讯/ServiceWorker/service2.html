@@ -8,9 +8,11 @@
 <body>
     <h1>service1</h1>
     <script>
+        /**注册同一serviceWorker*/
         navigator.serviceWorker.register('sw.js').then(function(registration){
             console.log('service worker 注册成功');
         })
+        //监听onmessage事件
         navigator.serviceWorker.onmessage = function(event){
             console.log('收到消息',event.data);
         }
