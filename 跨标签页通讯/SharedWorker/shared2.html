@@ -11,13 +11,17 @@
     <p id="message"></p>
     <script>
         const message = document.getElementById('message')
+        //创建一个共享worker
         const shared = new SharedWorker('shared.js');
+        //启动端口
         shared.port.start()
+        //监听消息
         shared.port.onmessage = (e)=>{
             message.innerHTML = e.data
         }
 
         setInterval(()=>{
+            //发送消息
             shared.port.postMessage('get')
         },1000)
     </script>

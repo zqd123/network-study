@@ -13,9 +13,10 @@
         const btn = document.getElementById('btn');
         const content = document.getElementById('content');
         const message = document.getElementById('message')
-
+        // 创建SharedWorker
         const shared = new SharedWorker('shared.js');
         btn.onclick = function(){
+            // 向SharedWorker发送消息
             shared.port.postMessage(content.value);
             content.value = '';
         }
