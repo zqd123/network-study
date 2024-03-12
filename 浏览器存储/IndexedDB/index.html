@@ -6,6 +6,26 @@
     <title>IndexedDB</title>
 </head>
 <body>
-    
+    <script src="./db.js"></script>
+    <script>
+        openDB('stuDB',1)
+        .then
+        (db=>{
+            // 添加数据
+            // addData(db,'stu',{'stuId':1,'stuName':'张三','stuAge':18})
+            // addData(db,'stu',{'stuId':2,'stuName':'李四','stuAge':19})
+            // addData(db,'stu',{'stuId':3,'stuName':'王五','stuAge':20})
+
+            //根据主键查询数据
+            // return getDataByKey(db,'stu',1)
+
+            //查询所有数据
+            return getAllData(db,'stu')
+        }).then(data=>{
+            console.log(data)
+        })
+
+        // deleteDB('stuDB');
+    </script>
 </body>
 </html>
