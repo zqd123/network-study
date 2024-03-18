@@ -6,7 +6,7 @@
     <title>localStorage1</title>
 </head>
 <body>
-    <h1>localStorage1</h1>
+    <h1>localStorage2</h1>
     <ul id="ul"></ul>
     <script>
         function changeView(){
@@ -20,12 +20,9 @@
                 ul.appendChild(li);
             }
         }
-        function changeData(key,value){
-            localStorage.setItem(key,value);
-            changeView();
-        }
-        changeData('name','张三')
-        changeData('age','18')
+        changeView();
+        //当localStorage发生变化时，会触发storage事件
+        window.addEventListener('storage',changeView)
     </script>
 </body>
 </html>

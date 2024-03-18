@@ -6,9 +6,10 @@
     <title>localStorage1</title>
 </head>
 <body>
-    <h1>localStorage2</h1>
+    <h1>localStorage1</h1>
     <ul id="ul"></ul>
     <script>
+        /** 更新视图*/
         function changeView(){
             const ul = document.getElementById('ul');
             ul.innerHTML = '';
@@ -20,8 +21,14 @@
                 ul.appendChild(li);
             }
         }
-        changeView();
-        window.addEventListener('storage',changeView)
+        /** 数据更新-更新视图*/
+        function changeData(key,value){
+            localStorage.setItem(key,value);
+            changeView();
+        }
+        /** 更新localStorage中数据 */
+        changeData('name','张三')
+        changeData('age','18')
     </script>
 </body>
 </html>
