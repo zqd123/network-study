@@ -67,8 +67,8 @@ function deleteDB(dbName) {
  * @param {*} data 数据
  */
 function addData(db, storeName, data) {
-    const request = db.transaction([storeName], "readwrite")//事物   
-    .objectStore(storeName)//获取仓库
+    const request = db.transaction([storeName], "readwrite")//事务  
+    .objectStore(storeName)//获取对象仓库
     .add(data);//添加数据
     request.onsuccess = function (event) {
       console.log("数据添加成功");
