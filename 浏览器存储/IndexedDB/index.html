@@ -12,15 +12,28 @@
         .then
         (db=>{
             // 添加数据
-            // addData(db,'stu',{'stuId':1,'stuName':'张三','stuAge':18})
-            // addData(db,'stu',{'stuId':2,'stuName':'李四','stuAge':19})
-            // addData(db,'stu',{'stuId':3,'stuName':'王五','stuAge':20})
+            addData(db,'stu',{'stuId':1,'stuName':'张三','stuAge':18})
+            addData(db,'stu',{'stuId':2,'stuName':'李四','stuAge':19})
+            addData(db,'stu',{'stuId':3,'stuName':'王五','stuAge':20})
+            addData(db,'stu',{'stuId':4,'stuName':'张三','stuAge':28})
+
+            //更新数据（对应主键）
+            upData(db,'stu',{'stuId':4,'stuName':'张三','stuAge':30})
 
             //根据主键查询数据
             // return getDataByKey(db,'stu',1)
 
+            //根据索引查询
+            // return getDataByIndex(db,'stu','stuName','张三')
+
+            //根据游标指针查询
+            // return getDataByCursor(db,'stu')
+
+            //根据条件查询
+            return getDataByIndexRange(db,'stu','stuName','张三')
+
             //查询所有数据
-            return getAllData(db,'stu')
+            // return getAllData(db,'stu')
         }).then(data=>{
             console.log(data)
         })
