@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="../../浏览器存储/IndexedDB/db.js"></script>
+    <script>
+      let db;
+
+      async function initData() {
+        db = await openDB("stuDB", 1);
+        addData(db, "stu", { stuId: 1, stuName: "张三", stuAge: 18 });
+      }
+      initData();
+    </script>
+  </body>
+</html>

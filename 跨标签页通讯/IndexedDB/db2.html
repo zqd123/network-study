@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="../../浏览器存储/IndexedDB/db.js"></script>
+    <script>
+      let db;
+      let dataLength;
+      async function initDB(name, version) {
+        db = await openDB("stuDB", 1);
+      }
+      initDB();
+      setInterval(async () => {
+        if (db) {
+          const data = await getAllData(db, "stu");
+          dataLength !== data.length &&console.log(data);
+          dataLength = data.length
+        }
+      }, 1000);
+    </script>
+  </body>
+</html>
